@@ -1,10 +1,19 @@
 const mongoose = require('mongoose');
+const mongodbLib = require('./mongodbLib.js');
 const mongodbUri = process.env.MONGODB_URI;
 
-mongoose.connect(mongodbUri, (err, res) => {
-    if (err) {
-        console.log('Error connection to: ' + mongodbUri + '. error: ' + err);
-    } else {
-        console.log('Succeeded connection to: ' + mongodbUri);
-    }
-})
+var schema = new mongoose.Schema({
+    user: String,
+    content: String,
+    time: { type: Date, default: Date.now }
+});
+
+var diary = mongoose.model('cordova-diary-db', schema);
+var diaryNode = new diary({
+    user: '高宇哲',
+    content: '今天天氣真好'
+});
+
+diaryNode.save((err) => { if (err) { console.log(err); } });
+
+mongodbLib.connect(mongodbUri);
