@@ -19,4 +19,4 @@ function insert(schema, data) {
 }
 
 exports.connect = connect;
-exports.getSchema = getSchema;
+exports.insert = insert;
