@@ -11,9 +11,9 @@ function connect(mongodbUri) {
     })
 }
 
-function insert(schema, data) {
+function insert(collection, schema, data) {
     let schemaInstance = new mongoose.Schema(schema);
-    let model = mongoose.model(schemaInstance);
+    let model = mongoose.model(collection, schemaInstance);
     let node = new model(data);
     node.save((err) => { console.log(err); });
 }
