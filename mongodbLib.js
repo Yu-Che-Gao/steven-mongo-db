@@ -11,4 +11,12 @@ function connect(mongodbUri) {
     })
 }
 
-exports.connect=connect;
+function insert(schema, data) {
+    let schemaInstance = new mongoose.Schema(schema);
+    let model = mongoose.model(schemaInstance);
+    let node = new model(data);
+    node.save((err) => { console.log(err); });
+}
+
+exports.connect = connect;
+exports.getSchema = getSchema;
