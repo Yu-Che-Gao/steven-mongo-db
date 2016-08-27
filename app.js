@@ -8,7 +8,7 @@ var schema = new mongoose.Schema({
     time: { type: Date, default: Date.now }
 });
 
-var diary = mongoose.model('cordova-diary-db', schema);
+var diary = mongoose.model('heroku_ltl0cncn', schema);
 var diaryNode = new diary({
     user: '高宇哲',
     content: '今天天氣真好'
