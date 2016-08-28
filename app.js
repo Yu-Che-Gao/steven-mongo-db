@@ -1,5 +1,5 @@
 const express = require('express');
-require('express-mongoose')()
+require('express-mongoose');
 const app = express();
 const mongodbLib = require('./mongodbLib.js');
 const promiseLib = require('./promiseLib.js');
