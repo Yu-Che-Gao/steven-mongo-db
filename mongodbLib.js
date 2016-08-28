@@ -12,6 +12,10 @@ function connect(mongodbUri) {
     })
 }
 
+function close() {
+    mongoose.connection.close();
+}
+
 function insert(collection, schema, data) {
     let schemaInstance = new mongoose.Schema(schema);
     let model = mongoose.model(collection, schemaInstance);
@@ -29,3 +33,4 @@ function select(collection, schema, condition) {
 exports.connect = connect;
 exports.insert = insert;
 exports.select = select;
+exports.close = close;
