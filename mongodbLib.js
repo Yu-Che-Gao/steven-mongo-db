@@ -13,7 +13,7 @@ function connect(mongodbUri) {
 }
 
 function close(connection) {
-    connection.disconnect();
+    mongoose.connection.connection.disconnect();
 }
 
 function insert(collection, schema, data) {
