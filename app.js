@@ -18,6 +18,8 @@ app.get('/', (req, res) => {
         (result) => { return result; }, (error) => { console.log(error); }
     ).then((value) => {
         mongodbLib.close(db);
+        return value;
+    }).then((value) => {
         return res.send(value);
     })
 })
