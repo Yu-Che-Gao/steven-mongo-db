@@ -3,6 +3,7 @@ const app = express();
 const mongodbLib = require('./mongodbLib.js');
 const promiseLib = require('./promiseLib.js');
 const mongodbUri = process.env.MONGODB_URI;
+const port = process.env.PORT || 5000;
 
 mongodbLib.connect(mongodbUri);
 // mongodbLib.insert('diary-dbs', {user: String, content: String, time: { type: Date, default: Date.now } }, { user: '高', content: '今天天氣真不好' });
@@ -18,3 +19,4 @@ app.get('/', (req, res) => {
     })
 })
 
+app.listen(port, () => { console.log('listening on port ' + port) });
