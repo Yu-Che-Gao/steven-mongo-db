@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const mongodbUri = process.env.MONGODB_URI;
 
 function connect(mongodbUri) {
+    mongoose.Promise = global.Promise;
     mongoose.connect(mongodbUri, (err, res) => {
         if (err) {
             console.log('Error connection to: ' + mongodbUri + '. error: ' + err);
@@ -21,7 +22,7 @@ function insert(collection, schema, data) {
 function select(collection, schema, condition) {
     let schemaInstance = new mongoose.Schema(schema);
     let model = mongoose.model(collection, schemaInstance);
-    let promise=model.find(condition).exec();
+    let promise = model.find(condition).exec();
     return promise;
 }
 
