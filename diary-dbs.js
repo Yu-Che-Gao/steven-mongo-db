@@ -3,7 +3,7 @@ const mongodbUri = process.env.MONGODB_URI;
 
 var schemaInstance, model;
 
-function connect(mongodbUri, schema) {
+function connect(mongodbUri, collection, schema) {
     mongoose.Promise = global.Promise;
     schemaInstance = new mongoose.Schema({
         user: String,
@@ -25,12 +25,12 @@ function connect(mongodbUri, schema) {
     })
 }
 
-function insert(collection, data) {
+function insert(data) {
     let node = new model(data);
     node.save((err) => { console.log(err); });
 }
 
-function select(collection, condition) {
+function select(condition) {
     let promise = model.find(condition).exec();
     return promise;
 }
