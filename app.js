@@ -1,12 +1,11 @@
 const express = require('express');
-
+require('express-mongoose')()
 const app = express();
 const mongodbLib = require('./mongodbLib.js');
 const promiseLib = require('./promiseLib.js');
 const mongodbUri = process.env.MONGODB_URI;
 const port = process.env.PORT || 5000;
 
-app.use(require('express-mongoose')());
 mongodbLib.connect(mongodbUri);
 // mongodbLib.insert('diary-dbs', {user: String, content: String, time: { type: Date, default: Date.now } }, { user: '高', content: '今天天氣真不好' });
 
