@@ -1,8 +1,18 @@
 const mongoose = require('mongoose');
 const mongodbUri = process.env.MONGODB_URI;
 
-function connect(mongodbUri) {
+var schemaInstance;
+
+function connect(mongodbUri, schema) {
     mongoose.Promise = global.Promise;
+    schemaInstance = new mongoose.Schema({
+        user: String,
+        content: String,
+        time: {
+            type: Date,
+            default: Date.now
+        }
+    });
     return mongoose.connect(mongodbUri, (err, res) => {
         if (err) {
             console.log('Error connection to: ' + mongodbUri + '. error: ' + err);
@@ -12,19 +22,13 @@ function connect(mongodbUri) {
     })
 }
 
-function close(db) {
-    return mongoose.connection.close();
-}
-
-function insert(collection, schema, data) {
-    let schemaInstance = new mongoose.Schema(schema);
+function insert(collection, data) {
     let model = mongoose.model(collection, schemaInstance);
     let node = new model(data);
     node.save((err) => { console.log(err); });
 }
 
-function select(collection, schema, condition) {
-    let schemaInstance = new mongoose.Schema(schema);
+function select(collection, condition) {
     let model = mongoose.model(collection, schemaInstance);
     let promise = model.find(condition).exec();
     return promise;
