@@ -14,10 +14,8 @@ mongodbLib.connect(mongodbUri);
 app.get('/', (req, res) => {
     let promise = mongodbLib.select('diary-dbs', { user: String, content: String, time: { type: Date, default: Date.now } }, { user: '高' })
     promise.then(
-        (result) => { return result; }, (error) => { console.log(error); }
+        (result) => { res.send(result); }, (error) => { console.log(error); }
     )
-
-    res.send(promise);
 })
 
 app.listen(port, () => { console.log('listening on port ' + port) });
