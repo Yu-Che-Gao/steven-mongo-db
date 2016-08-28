@@ -1,3 +1,5 @@
+const express = require('express');
+const app = express();
 const mongodbLib = require('./mongodbLib.js');
 const promiseLib = require('./promiseLib.js');
 const mongodbUri = process.env.MONGODB_URI;
@@ -6,11 +8,13 @@ mongodbLib.connect(mongodbUri);
 // mongodbLib.insert('diary-dbs', {user: String, content: String, time: { type: Date, default: Date.now } }, { user: '高', content: '今天天氣真不好' });
 
 // var promise = promiseLib.getNewPromise(['diary-dbs', { user: String, content: String, time: { type: Date, default: Date.now } }, { user: '高' }]);
-var promise = mongodbLib.select('diary-dbs', { user: String, content: String, time: { type: Date, default: Date.now } }, { user: '高' })
-promise.then(
-    (result) => {
-        console.log(result);
-    }, (error) => {
-        console.log(error);
-    }
-)
+
+app.get('/', (req, res) => {
+    let promise = mongodbLib.select('diary-dbs', { user: String, content: String, time: { type: Date, default: Date.now } }, { user: '高' })
+    promise.then(
+        (result) => { return reuslt; }, (error) => { console.log(error); }
+    ).then((value) => {
+        res.send(value);
+    })
+})
+
