@@ -17,8 +17,7 @@ app.get('/', (req, res) => {
     promise.then(
         (result) => { return result; }, (error) => { console.log(error); }
     ).then((value) => {
-        mongodbLib.close(db);
-        return value;
+        return mongodbLib.close(db);
     }).then((value) => {
         return res.send(value);
     })
