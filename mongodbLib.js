@@ -18,5 +18,14 @@ function insert(collection, schema, data) {
     node.save((err) => { console.log(err); });
 }
 
+function select(collection, schema, condition) {
+    let schemaInstance = new mongoose.Schema(schema);
+    let model = mongoose.model(collection, schemaInstance);
+    model.find(condition, (err, docs) => {
+        return docs;
+    })
+}
+
 exports.connect = connect;
 exports.insert = insert;
+exports.select = select;
