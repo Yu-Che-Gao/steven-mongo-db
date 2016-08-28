@@ -3,7 +3,7 @@ const mongodbUri = process.env.MONGODB_URI;
 
 function connect(mongodbUri) {
     mongoose.Promise = global.Promise;
-    mongoose.connect(mongodbUri, (err, res) => {
+    return mongoose.connect(mongodbUri, (err, res) => {
         if (err) {
             console.log('Error connection to: ' + mongodbUri + '. error: ' + err);
         } else {
@@ -12,8 +12,8 @@ function connect(mongodbUri) {
     })
 }
 
-function close() {
-    mongoose.disconnect();
+function close(connection) {
+    connection.disconnect();
 }
 
 function insert(collection, schema, data) {
