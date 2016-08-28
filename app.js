@@ -1,8 +1,7 @@
 const express = require('express');
 require('express-mongoose');
 const app = express();
-const mongodbLib = require('./mongodbLib.js');
-const promiseLib = require('./promiseLib.js');
+const mongodbLib = require('./diary-dbs.js');
 const mongodbUri = process.env.MONGODB_URI;
 const port = process.env.PORT || 5000;
 
