@@ -37,4 +37,3 @@ function select(collection, condition) {
 exports.connect = connect;
 exports.insert = insert;
 exports.select = select;
-exports.close = close;
