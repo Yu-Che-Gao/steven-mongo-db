@@ -1,4 +1,5 @@
 const express = require('express');
+require('express-mongoose');
 const app = express();
 const mongodbLib = require('./mongodbLib.js');
 const promiseLib = require('./promiseLib.js');
@@ -13,8 +14,10 @@ mongodbLib.connect(mongodbUri);
 app.get('/', (req, res) => {
     let promise = mongodbLib.select('diary-dbs', { user: String, content: String, time: { type: Date, default: Date.now } }, { user: '高' })
     promise.then(
-        (result) => { res.send(reuslt); }, (error) => { console.log(error); }
+        (result) => { return result; }, (error) => { console.log(error); }
     )
+
+    res.send(promise);
 })
 
 app.listen(port, () => { console.log('listening on port ' + port) });
