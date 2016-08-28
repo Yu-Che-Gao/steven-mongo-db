@@ -21,11 +21,8 @@ function insert(collection, schema, data) {
 function select(collection, schema, condition) {
     let schemaInstance = new mongoose.Schema(schema);
     let model = mongoose.model(collection, schemaInstance);
-    model.find(condition, (err, docs) => {
-        console.log('docs');
-        console.log(docs);
-        return docs;
-    })
+    let promise=model.find(condition).exec();
+    return promise;
 }
 
 exports.connect = connect;
