@@ -13,11 +13,8 @@ mongodbLib.connect(mongodbUri);
 app.get('/', (req, res) => {
     let promise = mongodbLib.select('diary-dbs', { user: String, content: String, time: { type: Date, default: Date.now } }, { user: '高' })
     promise.then(
-        (result) => { console.log(result); return reuslt; }, (error) => { console.log(error); }
-    ).then((value) => {
-        res.send(value);
-        return value;
-    })
+        (result) => { res.send(reuslt); }, (error) => { console.log(error); }
+    )
 })
 
 app.listen(port, () => { console.log('listening on port ' + port) });
