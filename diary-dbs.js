@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const mongodbUri = process.env.MONGODB_URI;
 
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
