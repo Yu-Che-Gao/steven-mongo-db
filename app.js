@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const bodyParser=require('body-parser');
 const mongoose = require('mongoose');
-const mapMongo = require('./map-mongo.js');
 const port = process.env.PORT || 5000;
 const mongodbUri = process.env.MONGODB_URI;
 
