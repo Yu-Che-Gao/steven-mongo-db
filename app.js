@@ -7,7 +7,7 @@ const mongodbUri = process.env.MONGODB_URI;
 
 app.use(bodyParser.urlencoded({extended: true}))
 mongoose.connect(mongodbUri);
-app.use(require('./controllers'))
-app.listen(port, () => { 
+// app.use(require('./controllers'))
+app.listen(port, () => {
     console.log('listening on port ' + port) 
 });
