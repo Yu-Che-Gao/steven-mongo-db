@@ -8,6 +8,7 @@ const mongodbUri = process.env.MONGODB_URI;
 
 app.use(bodyParser.urlencoded({extended: true}))
 mongoose.connect(mongodbUri);
+app.use(require('./controllers'))
 app.get('/', (req, res) => { res.send('you have no right to access this page.') });
-app.post('/list-diary', mapMongo.listDiary);
+// app.post('/list-diary', mapMongo.listDiary);
 app.listen(port, () => { console.log('listening on port ' + port) });
