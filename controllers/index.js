@@ -8,4 +8,5 @@ router.get('/', (req, res) => {
 });
 
 router.ws('/echo', wsEchoModel.echoSameMessage);
+router.ws('/echo-diary', wsEchoModel.echoDiary);
 module.exports = router;
