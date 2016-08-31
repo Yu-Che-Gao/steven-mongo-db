@@ -1,5 +1,7 @@
 function echoSameMessage(ws, req) {
-    ws.send(msg)
+    ws.on('message', (msg)=>{
+        ws.send(msg);
+    })
 }
 
 exports.echoSameMessage = echoSameMessage;
