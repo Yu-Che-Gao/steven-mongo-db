@@ -4,4 +4,4 @@ function echoSameMessage(ws, req) {
     });
 }
 
-exports.echoSameMessage=echoSameMessage;
+exports.echoSameMessage = echoSameMessage;
