@@ -1,4 +1,4 @@
-const wsEchoModel = require('../mㄟdels/ws-echo.js');
+const wsEchoModel = require('../models/ws-echo.js');
 const express = require('express');
 const router = express();
 
