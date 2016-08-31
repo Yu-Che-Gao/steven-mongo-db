@@ -6,10 +6,6 @@ router.get('/', (req, res) => {
     res.send('you have no right to access this page.')
 });
 
-router.ws('/echo', (ws, req) => {
-    ws.on('message', (msg) => {
-        ws.send(msg)
-    });
-});
+router.ws('/echo', require('./ws-echo'));
 
 module.exports = router;
