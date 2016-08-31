@@ -7,6 +7,4 @@ router.get('/', (req, res) => {
 });
 
 router.ws('/echo', require('./ws-echo'));
-
-
 module.exports = router;
