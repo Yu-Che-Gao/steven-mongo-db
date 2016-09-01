@@ -12,7 +12,7 @@ function echoDiary(ws, req) {
             console.log(result);
             return result;
         }).then((result)=>{
-            return ws.send(result.stringify());
+            return ws.send(result.toString());
         }).catch((error)=>{
             console.log('error: '+error);
         });
