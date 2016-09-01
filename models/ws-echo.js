@@ -10,6 +10,8 @@ function echoDiary(ws, req) {
         diaryDbs.find({ user: msg }).exec().then((result) => {
             console.log('ws');
             console.log(result);
+            return result;
+        }).then((result)=>{
             ws.send(result);
             return;
         });
