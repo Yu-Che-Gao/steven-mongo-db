@@ -11,10 +11,10 @@ function echoDiary(ws, req) {
             console.log('ws');
             console.log(result);
             return result;
-        }).then((result)=>{
+        }).then((result) => {
             return ws.send(result.toString());
-        }).catch((error)=>{
-            console.log('error: '+error);
+        }).catch((error) => {
+            console.log('error: ' + error);
         });
     })
 }
